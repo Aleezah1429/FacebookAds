@@ -1,6 +1,7 @@
-const express = require ('express');
-const axios = require ('axios');
-const bodyParser = require ('body-parser');
+const express = require('express');
+const axios = require('axios');
+const bodyParser = require('body-parser');
+const { response } = require('express');
 
 const app = express();
 
@@ -8,12 +9,24 @@ const app = express();
 app.use(bodyParser.json());
 
 // support parsing of application/x-www-form-urlencoded post data
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(8001,()=>{
+app.listen(8001, () => {
     console.log("Server started")
 })
 
-app.post("/postToPage", (req,res)=>{
-    
+app.post("/postToPage", (req, res) => {
+    const text = req.body.text;
+    const img = req.body.img;
+
+    axios.post()
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+
+
+
 })
