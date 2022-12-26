@@ -2,10 +2,13 @@ const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const { response } = require('express');
-// https://www.facebook.com/photo/?fbid=1368179713987704&set=a.115931115879243
-// post id for image = 115931115879243
-// access token = EAAKEvbZB9KnEBAPNTjJZCoGtZBxNugOE9xbMBJUB6ZCcf2TnUQFvb61XEqbvKGEybluYlyqfA6rs10hSZCbU4N6y2dLZCjmrZAgqELElchgwEh20SpwZBmM60FXNi0eRW9cRh3b8qDx4sZBivuBYdoScJI2AZCs41ZBjrI5lfm2nZAVKy5eZAMviY6LOhkUsixkPZBWt4yqnp3ZAEvJvOW2FJcmt5OT
-// page id = 100967834989781 craft , 100064289492280 JI, 100088910322486 find ME 
+
+// access token = EABPAiNYXlqkBAAwoKIShY8HZC2hn59RxLTkvy0EkeiAEjKuc1VU7D2tZC71jNNZCSdHGrhz7EUZBlBQjPvZAHxyZBc9NBkw8DKu4nTNXubKI3aNpketnDPXoBApZBVa7utredIEbuG8Te7yXRj0xyKfNKdZAf9nZAZCb2DhplreeAWjNhDYZCymTqW18bPcC8C5XTefC0C9YV1miAZDZD
+// page id = 111718295128430 find ME 
+// img = https://as1.ftcdn.net/v2/jpg/00/10/37/18/1000_F_10371839_XSeB2kreuA59Z1LexptFBM8qEuVlzphM.jpg
+// TOKEN LINK ==>  111718295128430/feed?message=This is FindME App testing
+// posting a message ===> https://graph.facebook.com/111718295128430/feed?message=This is posting FindME App from postman&access_token=EABPAiNYXlqkBAAwoKIShY8HZC2hn59RxLTkvy0EkeiAEjKuc1VU7D2tZC71jNNZCSdHGrhz7EUZBlBQjPvZAHxyZBc9NBkw8DKu4nTNXubKI3aNpketnDPXoBApZBVa7utredIEbuG8Te7yXRj0xyKfNKdZAf9nZAZCb2DhplreeAWjNhDYZCymTqW18bPcC8C5XTefC0C9YV1miAZDZD
+// posting an image ===> https://graph.facebook.com/111718295128430/photos?url=https://as1.ftcdn.net/v2/jpg/00/10/37/18/1000_F_10371839_XSeB2kreuA59Z1LexptFBM8qEuVlzphM.jpg&access_token=EABPAiNYXlqkBAAwoKIShY8HZC2hn59RxLTkvy0EkeiAEjKuc1VU7D2tZC71jNNZCSdHGrhz7EUZBlBQjPvZAHxyZBc9NBkw8DKu4nTNXubKI3aNpketnDPXoBApZBVa7utredIEbuG8Te7yXRj0xyKfNKdZAf9nZAZCb2DhplreeAWjNhDYZCymTqW18bPcC8C5XTefC0C9YV1miAZDZD
 
 const app = express();
 
@@ -19,18 +22,18 @@ app.listen(8001, () => {
     console.log("Server started")
 })
 
+const pageId = "111718295128430"
+const access_token = "EABPAiNYXlqkBAAwoKIShY8HZC2hn59RxLTkvy0EkeiAEjKuc1VU7D2tZC71jNNZCSdHGrhz7EUZBlBQjPvZAHxyZBc9NBkw8DKu4nTNXubKI3aNpketnDPXoBApZBVa7utredIEbuG8Te7yXRj0xyKfNKdZAf9nZAZCb2DhplreeAWjNhDYZCymTqW18bPcC8C5XTefC0C9YV1miAZDZD"
+
 app.post("/postToPage", (req, res) => {
     const text = req.body.text;
     const img = req.body.img;
 
-    axios.post()
+    axios.post(`https://graph.facebook.com/${pageId}/photos?url=${img}&access_token=${access_token}`, null)
         .then(function (response) {
             console.log(response)
         })
         .catch(function (error) {
             console.log(error)
         })
-
-
-
 })
